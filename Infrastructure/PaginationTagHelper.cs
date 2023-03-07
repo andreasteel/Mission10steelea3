@@ -47,8 +47,8 @@ namespace Mission9steelea3.Infrastructure
                 if (PageClassesEnabled)
                 {
                     tb.AddCssClass(PageClass);
-                    //tb.AddCssClass(i == PageInfo.CurrentPage
-                        //? PageClassSelected : PageClassNormal);
+                    tb.AddCssClass(i == PageBlah.CurrentPage
+                        ? PageClassSelected : PageClassNormal);
                 }
                 tb.InnerHtml.Append(i.ToString());
 
