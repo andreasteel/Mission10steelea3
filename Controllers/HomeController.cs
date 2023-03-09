@@ -19,7 +19,7 @@ namespace Mission9steelea3.Controllers
         }
         public IActionResult Index(string bookCategories, int pageNum = 1)
         {
-            int pageSize = 5;
+            int pageSize = 10;
 
             var x = new BooksViewModel
             {
