@@ -17,21 +17,21 @@ namespace Mission9steelea3.Controllers
         {
             repo = temp;
         }
-        public IActionResult Index(string bookCategory, int pageNum = 1)
+        public IActionResult Index(string bookCategories, int pageNum = 1)
         {
             int pageSize = 5;
 
             var x = new BooksViewModel
             {
                 Books = repo.Books
-                .Where(b => b.Category == bookCategory || bookCategory == null)
+                .Where(b => b.Category == bookCategories || bookCategories == null)
                 .OrderBy(b => b.Title)
                 .Skip((pageNum - 1) * pageSize)
                 .Take(pageSize),
 
                 PageInfo = new PageInfo
                 {
-                    TotalNumBooks = (bookCategory == null ? repo.Books.Count() : repo.Books.Where(x => x.Category == bookCategory).Count()),
+                    TotalNumBooks = (bookCategories == null ? repo.Books.Count() : repo.Books.Where(x => x.Category == bookCategories).Count()),
                     BooksPerPage = pageSize,
                     CurrentPage = pageNum
                 }

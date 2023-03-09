@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Components\BookCategoriesComponent.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="wwwroot\lib\" />
   </ItemGroup>
 
