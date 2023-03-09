@@ -18,7 +18,7 @@ namespace Mission9steelea3.Components
 
         public IViewComponentResult Invoke()
         {
-            ViewBag.SelectedCategory = RouteData?.Values["bookCategroy"];
+            ViewBag.SelectedCategory = RouteData?.Values["bookCategory"];
 
             var categories = repo.Books
                 .Select(x => x.Category)

@@ -55,11 +55,9 @@ namespace Mission9steelea3
                     "{bookCategory}/Page{pageNum}",
                     new { Controller = "Home", action = "Index" });
 
-                endpoints.MapControllerRoute(
-                    name: "Paging",
-                    pattern: "Page{pageNum}",
-                    defaults: new { Controller = "Home", action = "Index" }
-                    );
+                endpoints.MapControllerRoute("Paging",
+                    "Page{pageNum}",
+                    new { Controller = "Home", action = "Index", pageNum = 1});
 
                 endpoints.MapControllerRoute("category",
                     "{bookCategory}",
