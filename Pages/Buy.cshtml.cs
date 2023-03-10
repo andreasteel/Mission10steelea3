@@ -19,8 +19,9 @@ namespace Mission9steelea3.Pages
 
         public Basket basket { get; set; }
 
-        public void OnGet()
+        public void OnGet(Basket b)
         {
+            basket = b;
         }
 
         public IActionResult OnPost(string title)
@@ -30,7 +31,7 @@ namespace Mission9steelea3.Pages
             basket = new Basket();
             basket.AddItem(b, 1);
 
-            return RedirectToPage();
+            return RedirectToPage(basket);
         }
     }
 }
