@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Mission9steelea3.Infrastructure;
 using Mission9steelea3.Models;
 
 namespace Mission9steelea3.Pages
@@ -21,17 +22,19 @@ namespace Mission9steelea3.Pages
 
         public void OnGet(Basket b)
         {
-            basket = b;
+            basket = HttpContext.Session.GetJson<Basket>("basket") ?? new Basket();
         }
 
         public IActionResult OnPost(string title)
         {
             Book b = repo.Books.FirstOrDefault(x => x.Title == title);
 
-            basket = new Basket();
+            basket = HttpContext.Session.GetJson<Basket>("basket") ?? new Basket();
             basket.AddItem(b, 1);
 
-            return RedirectToPage(basket);
+            HttpContext.Session.SetJson("basket", basket);
+
+            return RedirectToPage();
         }
     }
 }
