@@ -19,13 +19,15 @@ namespace Mission9steelea3.Pages
         }
 
         public Basket basket { get; set; }
+        public string ReturnUrl { get; set; }
 
-        public void OnGet(Basket b)
+        public void OnGet(string returnUrl)
         {
+            ReturnUrl = returnUrl ?? "/";
             basket = HttpContext.Session.GetJson<Basket>("basket") ?? new Basket();
         }
 
-        public IActionResult OnPost(string title)
+        public IActionResult OnPost(string title, string returnUrl)
         {
             Book b = repo.Books.FirstOrDefault(x => x.Title == title);
 
@@ -34,7 +36,7 @@ namespace Mission9steelea3.Pages
 
             HttpContext.Session.SetJson("basket", basket);
 
-            return RedirectToPage();
+            return RedirectToPage(new { ReturnUrl = returnUrl });
         }
     }
 }
