@@ -24,19 +24,22 @@ namespace Mission9steelea3.Pages
         public void OnGet(string returnUrl)
         {
             ReturnUrl = returnUrl ?? "/";
-            basket = HttpContext.Session.GetJson<Basket>("basket") ?? new Basket();
         }
 
         public IActionResult OnPost(string title, string returnUrl)
         {
             Book b = repo.Books.FirstOrDefault(x => x.Title == title);
 
-            basket = HttpContext.Session.GetJson<Basket>("basket") ?? new Basket();
             basket.AddItem(b, 1);
 
-            HttpContext.Session.SetJson("basket", basket);
-
             return RedirectToPage(new { ReturnUrl = returnUrl });
+        }
+
+        public IActionResult OnPostRemove (string title, string returnUrl)
+        {
+            basket.RemoveItem(basket.Items.First(x => x.Book.Title == title).Book);
+
+            return RedirectToPage ( new {ReturnUrl = returnUrl});
         }
     }
 }

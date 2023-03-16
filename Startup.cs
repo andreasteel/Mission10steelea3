@@ -40,7 +40,9 @@ namespace Mission9steelea3
             services.AddDistributedMemoryCache();
             services.AddSession();
 
-            services.AddScoped<Basket>(XmlConfigurationExtensions => SessionBasket.GetBasket(XmlConfigurationExtensions));
+            services.AddScoped<Basket>(x => SessionBasket.GetBasket(x));
+
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
