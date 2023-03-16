@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Mission9steelea3.Models
 {
-    public class Checkout
+    public class Donation
     {
         [Key]
         [BindNever]
