@@ -21,6 +21,10 @@ namespace Mission9steelea3.Models
 
         public DbSet<Book> Books { get; set; }
 
+        //check here for an error
+        public DbSet<Checkout> Checkouts { get; set; }
+
+
 
     }
 }
