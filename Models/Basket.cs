@@ -9,7 +9,7 @@ namespace Mission9steelea3.Models
     {
         public List<BasketLineItem> Items { get; set; } = new List<BasketLineItem>();
 
-        public void AddItem (Book bo, int qty)
+        public virtual void AddItem (Book bo, int qty)
         {
             BasketLineItem line = Items
                 .Where(b => b.Book.Title == bo.Title)
@@ -27,6 +27,16 @@ namespace Mission9steelea3.Models
             {
                 line.Quantity += qty;
             }
+        }
+
+        public virtual void RemoveItem (Book bo)
+        {
+            Items.RemoveAll(x => x.Book.Title == bo.Title);
+        }
+
+        public virtual void ClearBasket ()
+        {
+            Items.Clear();
         }
 
         public double CalculateTotal()

@@ -39,6 +39,8 @@ namespace Mission9steelea3
 
             services.AddDistributedMemoryCache();
             services.AddSession();
+
+            services.AddScoped<Basket>(XmlConfigurationExtensions => SessionBasket.GetBasket(XmlConfigurationExtensions));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -57,7 +59,7 @@ namespace Mission9steelea3
             {
 
                 endpoints.MapControllerRoute("categorypage",
-                    "{bookCategory}/Page{pageNum}",
+                    "{bookCategories}/Page{pageNum}",
                     new { Controller = "Home", action = "Index" });
 
                 endpoints.MapControllerRoute("Paging",
@@ -65,7 +67,7 @@ namespace Mission9steelea3
                     new { Controller = "Home", action = "Index", pageNum = 1 });
 
                 endpoints.MapControllerRoute("category",
-                    "{bookCategory}",
+                    "{bookCategories}",
                     new { Controller = "Home", action = "Index", pageNum = 1 });
 
                 
