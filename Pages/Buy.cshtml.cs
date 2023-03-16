@@ -12,14 +12,16 @@ namespace Mission9steelea3.Pages
     public class BuyModel : PageModel
     {
         private IBookstoreRepository repo { get; set; }
-
-        public BuyModel (IBookstoreRepository temp)
-        {
-            repo = temp;
-        }
-
         public Basket basket { get; set; }
         public string ReturnUrl { get; set; }
+
+        public BuyModel (IBookstoreRepository temp, Basket b)
+        {
+            repo = temp;
+            basket = b;
+        }
+
+
 
         public void OnGet(string returnUrl)
         {
