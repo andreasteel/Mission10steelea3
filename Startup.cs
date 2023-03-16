@@ -34,6 +34,7 @@ namespace Mission9steelea3
             });
 
             services.AddScoped<IBookstoreRepository, EFBookstoreRepository>();
+            services.AddScoped<IDonationRepository, EFDonationRepository>();
 
             services.AddRazorPages();
 
