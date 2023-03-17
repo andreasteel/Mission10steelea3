@@ -35,7 +35,7 @@ namespace Mission9steelea3.Controllers
                 repo.SaveDonation(donation);
                 basket.ClearBasket();
 
-                return View();
+                return RedirectToPage("/CheckoutCompleted");
             }
             else
             {

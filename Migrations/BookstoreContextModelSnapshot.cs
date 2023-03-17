@@ -25,7 +25,7 @@ namespace Mission9steelea3.Migrations
                     b.Property<long?>("BookId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("CheckoutId")
+                    b.Property<int?>("DonationCheckoutId")
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("Quantity")
@@ -35,7 +35,7 @@ namespace Mission9steelea3.Migrations
 
                     b.HasIndex("BookId");
 
-                    b.HasIndex("CheckoutId");
+                    b.HasIndex("DonationCheckoutId");
 
                     b.ToTable("BasketLineItem");
                 });
@@ -75,7 +75,7 @@ namespace Mission9steelea3.Migrations
                     b.ToTable("Books");
                 });
 
-            modelBuilder.Entity("Mission9steelea3.Models.Checkout", b =>
+            modelBuilder.Entity("Mission9steelea3.Models.Donation", b =>
                 {
                     b.Property<int>("CheckoutId")
                         .ValueGeneratedOnAdd()
@@ -125,9 +125,9 @@ namespace Mission9steelea3.Migrations
                         .WithMany()
                         .HasForeignKey("BookId");
 
-                    b.HasOne("Mission9steelea3.Models.Checkout", null)
+                    b.HasOne("Mission9steelea3.Models.Donation", null)
                         .WithMany("Lines")
-                        .HasForeignKey("CheckoutId");
+                        .HasForeignKey("DonationCheckoutId");
                 });
 #pragma warning restore 612, 618
         }
